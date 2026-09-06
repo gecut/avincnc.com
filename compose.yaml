@@ -1,0 +1,9 @@
+services:
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${IMAGE_NAME:-avincnc}:${IMAGE_TAG:-local}
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped
