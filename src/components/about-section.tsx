@@ -59,7 +59,7 @@ export function AboutSection({ about, capabilities }: AboutSectionProps) {
             {capabilities.map((capability) => (
               <article key={capability.title} className="flex flex-col items-center justify-center gap-4 border-b border-slate-200 py-6 text-center last:border-b-0 md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6 md:text-right">
                   <span className="grid size-11 place-items-center rounded-full bg-brand-50 text-brand-600">
-                    <Icon name={capability.status === "active-category" ? "factory" : "settings"} className="size-5" />
+                    <Icon name={capability.icon || (capability.status === "active-category" ? "factory" : "settings")} className="size-5" />
                   </span>
                 <div>
                   <h3 className="text-lg font-black text-ink-950">{capability.title}</h3>

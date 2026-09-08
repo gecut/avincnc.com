@@ -20,6 +20,35 @@ const paths: Record<IconProps["name"], React.ReactNode> = {
   check: <path d="m5 12 4 4L19 6"/>,
   bulb: <><path d="M9 18h6m-5 3h4"/><path d="M8.2 14.4A7 7 0 1 1 15.8 14.4C14.7 15.2 14 16.5 14 18h-4c0-1.5-.7-2.8-1.8-3.6Z"/></>,
   info: <><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></>,
+  laser: (
+    <>
+      <path d="M10 2h4l1 5h-6l1-5z" />
+      <line x1="12" y1="7" x2="12" y2="15" strokeWidth="2" />
+      <circle cx="12" cy="16.5" r="1.2" fill="currentColor" />
+      <path d="m8 14-2.5-1M16 14l2.5-1M9 18.5l-2 2M15 18.5l2 2" />
+      <path d="M3 21h18" strokeWidth="2" />
+    </>
+  ),
+  wood: (
+    <>
+      <ellipse cx="7.5" cy="12" rx="3.5" ry="6.5" />
+      <ellipse cx="7.5" cy="12" rx="1.8" ry="3.2" />
+      <circle cx="7.5" cy="12" r="0.75" fill="currentColor" />
+      <path d="M7.5 5.5H18a3.5 6.5 0 0 1 0 13H7.5" />
+      <path d="M11 9c1.5.5 2 1.5 2 3s-.5 2.5-2 3" />
+    </>
+  ),
+  metal: (
+    <>
+      <path d="M4 3h16v3.5h-4.5v11H20V21H4v-3.5h4.5v-11H4V3z" />
+      <line x1="9" y1="3" x2="9" y2="6.5" />
+      <line x1="15" y1="3" x2="15" y2="6.5" />
+      <line x1="9" y1="17.5" x2="9" y2="21" />
+      <line x1="15" y1="17.5" x2="15" y2="21" />
+    </>
+  ),
+  tree: <><path d="M12 22v-5"/><path d="M12 2a5 5 0 0 0-4.9 6A4 4 0 0 0 4 11.5a4 4 0 0 0 3 3.9A4.5 4.5 0 0 0 12 17a4.5 4.5 0 0 0 5-1.6 4 4 0 0 0 3-3.9 4 4 0 0 0-3.1-3.5A5 5 0 0 0 12 2z"/></>,
+  layers: <><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></>,
 };
 
 export function Icon({ name, className, ...props }: IconProps) {

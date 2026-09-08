@@ -165,7 +165,11 @@ export function VideoShowcaseSection({ videoShowcase }: VideoShowcaseSectionProp
               {!hasStarted && (
                 <div
                   onClick={togglePlay}
-                  className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(47,131,204,.24),transparent_42%),linear-gradient(135deg,rgba(16,26,43,0.8),rgba(5,8,14,0.9))] cursor-pointer"
+                  className={`absolute inset-0 cursor-pointer ${
+                    videoShowcase.poster
+                      ? "bg-black/30 backdrop-brightness-95"
+                      : "bg-[radial-gradient(circle_at_50%_35%,rgba(47,131,204,.24),transparent_42%),linear-gradient(135deg,rgba(16,26,43,0.8),rgba(5,8,14,0.9))]"
+                  }`}
                 />
               )}
 
