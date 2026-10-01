@@ -50,7 +50,6 @@ export function CategoriesSection({ categories }: CategoriesSectionProps) {
               >
                 <Link
                   href={`/products?category=${category.slug}`}
-                  aria-label={`مشاهده ${category.name}`}
                   className="group flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl border border-slate-900/20 transition-all duration-300 active:scale-[0.99]"
                 >
                   <figure className="relative w-full shrink-0 overflow-hidden bg-ink-950">
@@ -135,7 +134,6 @@ export function CategoriesSection({ categories }: CategoriesSectionProps) {
                 key={category.slug}
                 href={`/products?category=${category.slug}`}
                 data-reveal-item
-                aria-label={`مشاهده ${category.name}`}
                 className="group grid min-w-0 items-center gap-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-4 lg:grid-cols-2 lg:gap-14"
               >
                 <figure

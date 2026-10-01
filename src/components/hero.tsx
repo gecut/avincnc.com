@@ -98,7 +98,7 @@ export function Hero({ hero }: HeroProps) {
 
       <a
         href="#about"
-        aria-label="رفتن به بخش بعدی"
+        aria-label={`${hero.title} ${hero.highlightedTitle} - رفتن به بخش بعدی`}
         className="w-full group absolute bottom-[6%] left-1/2 z-20 flex h-24 -translate-x-1/2 translate-y-[33px] flex-col items-center justify-end gap-0.5 pb-4 text-white focus-visible:rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 sm:bottom-0 sm:h-28 sm:w-24 sm:translate-y-[37px] sm:pb-10"
       >
         <div className="w-full! flex items-center my-12 justify-center gap-1 text-lg font-medium text-white  sm:hidden">
@@ -125,6 +125,7 @@ export function Hero({ hero }: HeroProps) {
         block size-3
         rotate-45
         border-b-2 border-r-2 border-current
+        will-change-[opacity]
         [animation:hero-scroll-chevron_1.9s_ease-in-out_infinite]
         sm:size-4
       "

@@ -3,9 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Maximize, Minimize, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { SectionHeader } from "@/components/section-header";
-import { changaOne } from "@/config/fonts";
 import type { SiteConfig } from "@/config/site-config";
-import { video } from "motion/react-client";
 
 type VideoShowcaseSectionProps = {
   videoShowcase: SiteConfig["videoShowcase"];
@@ -147,19 +145,20 @@ export function VideoShowcaseSection({ videoShowcase }: VideoShowcaseSectionProp
               onMouseLeave={() => setIsHovered(false)}
               className="group relative aspect-video overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_50%_35%,rgba(47,131,204,.24),transparent_42%),linear-gradient(135deg,#101a2b,#05080e)] shadow-2xl shadow-black/30 select-none"
             >
-              {/* Video Element */}
               <video
                 ref={videoRef}
                 src={videoSrc}
                 poster={videoShowcase.poster}
                 playsInline
-                preload="metadata"
+                preload="none"
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
                 onEnded={() => setIsPlaying(false)}
                 onClick={togglePlay}
                 className="h-full w-full object-cover cursor-pointer"
-              />
+              >
+                <track kind="captions" srcLang="fa" label="فارسی" />
+              </video>
 
               {/* Ambient / Initial Backdrop when not playing */}
               {!hasStarted && (

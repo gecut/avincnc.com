@@ -20,7 +20,7 @@ type NavBarProps = {
 
 export function Logo() {
   return (
-    <Link href="/" aria-label="صفحه اصلی آوین CNC" className="group flex min-w-0 items-center" dir="ltr">
+    <Link href="/" aria-label="AVINCNC - صفحه اصلی آوین CNC" className="group flex min-w-0 items-center" dir="ltr">
       <span className="relative block pb-2 leading-none rounded-full ">
         <span className={`${changaOne.className} block whitespace-nowrap text-[1.55rem] tracking-[0.02em] text-white sm:text-[1.8rem]`}>
           AVIN<span className="ml-1 text-brand-400">CNC</span>

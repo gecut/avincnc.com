@@ -6,4 +6,16 @@ services:
     image: ${IMAGE_NAME:-avincnc}:${IMAGE_TAG:-local}
     ports:
       - "${PORT:-8080}:80"
+    environment:
+      NGINX_FORCE_DOMAIN: "avincnc.com"
+      NGINX_AUTO_WEBP: "on"
+      NGINX_CDN_CACHE_IMAGE: "public, max-age=2592000, stale-while-revalidate=86400"
+      NGINX_CDN_IMAGE_S_MAXAGE: "31536000"
+      NGINX_CDN_CACHE_UNVERSIONED_STATIC: "public, max-age=604800, stale-while-revalidate=86400"
+      NGINX_CDN_CACHE_JSON: "public, max-age=300, stale-while-revalidate=60"
+      NGINX_CDN_CACHE_HTML: "public, max-age=0, must-revalidate"
+      NGINX_CDN_HTML_S_MAXAGE: "3600"
+    security_opt:
+      - no-new-privileges:true
     restart: unless-stopped
+

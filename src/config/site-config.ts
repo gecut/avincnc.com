@@ -214,7 +214,7 @@ export const siteConfig: SiteConfig = {
 
     status: "",
     videoSrc: "/videos/avin 1.mp4",
-    poster: "/images/video-showcase-poster.jpg",
+    poster: "/images/video-showcase-poster.webp",
   },
   interfaceShowcase: {
     eyebrow: "دقت ماشینکاری و برشکاری",
@@ -358,7 +358,7 @@ export const siteConfig: SiteConfig = {
       subtitle: "",
       description:
         "مناسب برای برشکاری بسیار دقیق و سریع روی ورق های اهن ، استیل و الومینیوم ",
-      image: "/images/leaser-fiber.jpg",
+      image: "/images/leaser-fiber.webp",
       imageAlt: "دستگاه برش لیزر فایبر در محیط صنعتی",
       imageLabel: "FIBER LASER",
       badge: "FIBER LASER",
@@ -394,7 +394,7 @@ export const siteConfig: SiteConfig = {
       subtitle: "طراحی و ساخت ماشین‌آلات CNC برای صنعت چوب",
       description:
         "ساخت دستگاه های CNC در سایز های مختلف و سفارشی  با آپشن تولچنج و پمپ وکیوم و تعداد محور مدنظر شما",
-      image: "/images/category-wood-cnc-concept-v3.jpg",
+      image: "/images/category-wood-cnc-concept-v3.webp",
       imageAlt: "دستگاه CNC چوب در محیط صنعتی",
       imageLabel: "CNC WOOD",
       badge: "",
@@ -438,7 +438,7 @@ export const siteConfig: SiteConfig = {
           label: "لیزر فایبر 2 × 6",
         },
         {
-          src: "/images/leaser-fiber.jpg",
+          src: "/images/leaser-fiber.webp",
           alt: "دستگاه لیزر فایبر سایز 2 در 6",
           label: "لیزر فایبر 2 × 6",
         },

@@ -172,7 +172,7 @@ export function MachineInterfaceSection({
                   </p>
 
                   <p
-                    className="text-right text-xs leading-6 text-white/40"
+                    className="text-right text-xs leading-6 text-white/60"
                     dir="rtl"
                   >
                     از 0.1 میلی متر تا 0.05 میلی متر بر حسب نیاز شما{" "}
@@ -257,7 +257,7 @@ export function MachineInterfaceSection({
                   <span className="block size-2 rounded-full border border-white/90 bg-cyan-100 shadow-[0_0_8px_2px_rgba(103,232,249,.95),0_0_22px_6px_rgba(47,131,204,.75)] sm:size-2.5" />
                 </div>
               </div>
-              <figcaption className="mt-2 text-[11px] text-white/40 sm:mt-3 sm:text-xs">
+              <figcaption className="mt-2 text-[11px] text-white/60 sm:mt-3 sm:text-xs">
                 {interfaceShowcase.imageLabel}
               </figcaption>
             </figure>

@@ -142,7 +142,7 @@ export function Footer({
               <div className="flex h-26 w-full max-w-[280px] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] p-4 shadow-sm backdrop-blur-xs transition-all hover:border-brand-500/30 hover:bg-white/[0.08] lg:h-28 lg:w-full lg:max-w-[240px]">
                 <div className="relative aspect-[3.2/1] h-auto w-full max-w-[210px]">
                   <Image
-                    src="/images/gecut-logo.png"
+                    src="/images/gecut-logo.webp"
                     alt="لوگو جیکات GECUT"
                     fill
                     className="object-contain"
