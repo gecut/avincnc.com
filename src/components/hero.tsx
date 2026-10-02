@@ -13,6 +13,9 @@ export function Hero({ hero }: HeroProps) {
       aria-labelledby="hero-title"
       className="relative z-10 min-h-[calc(100svh+20px)] bg-white text-white sm:min-h-[calc(100svh+64px)]"
     >
+      <h1 id="hero-title" className="sr-only">
+        {hero.eyebrow} — {hero.title} {hero.highlightedTitle} | شرکت دانش‌بنیان آوین ماشین پاژ
+      </h1>
       <div className="relative h-[calc(100svh+20px)] overflow-hidden rounded-t-none! bg-ink-950 pb-16! shadow-[0_8px_18px_-7px_rgba(7,11,18,.38),0_24px_46px_-16px_rgba(7,11,18,.3)] sm:h-[calc(100svh+64px)]">
         <div className="absolute inset-0 z-0 rounded-none ">
           <Image

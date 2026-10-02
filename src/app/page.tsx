@@ -7,11 +7,19 @@ import { FaqSection } from "@/components/faq-section";
 import { Hero } from "@/components/hero";
 import { MachineInterfaceSection } from "@/components/machine-interface-section";
 import { VideoShowcaseSection } from "@/components/video-showcase-section";
+import { ProcessSection } from "@/components/process-section";
 import { siteConfig } from "@/config/site-config";
+import { getHowToSchema } from "@/lib/schema";
 
 export default function Home() {
+  const howToSchema = getHowToSchema(siteConfig.processSteps);
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
       <Hero hero={siteConfig.hero} />
       <AboutSection
         about={siteConfig.about}
@@ -22,7 +30,7 @@ export default function Home() {
       <MachineInterfaceSection interfaceShowcase={siteConfig.interfaceShowcase} />
       <FeaturedProductsSection products={siteConfig.products.slice(0, 3)} />
       <CommercialSection commercial={siteConfig.commercial} />
-      {/* <ProcessSection steps={siteConfig.processSteps} /> */}
+      <ProcessSection steps={siteConfig.processSteps} />
       <FaqSection faqs={siteConfig.faqs} whatsapp={siteConfig.contact.whatsapp} />
       <ContactSection contact={siteConfig.contact} />
     </main>

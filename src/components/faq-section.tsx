@@ -3,6 +3,7 @@ import { Icon } from "@/components/icons";
 import { toEnglishPaddedNumber } from "@/lib/persian-numbers";
 import { SectionHeader } from "@/components/section-header";
 import type { FaqItem } from "@/config/site-config";
+import { getFaqSchema } from "@/lib/schema";
 import {
   Accordion,
   AccordionContent,
@@ -16,18 +17,7 @@ type FaqSectionProps = {
 };
 
 export function FaqSection({ faqs, whatsapp }: FaqSectionProps) {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
+  const faqSchema = getFaqSchema(faqs);
 
   return (
     <section data-reveal id="faq" className="bg-white py-20 sm:py-24 lg:py-28">

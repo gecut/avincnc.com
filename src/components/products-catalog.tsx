@@ -42,13 +42,6 @@ export function ProductsCatalog({ categories, products }: ProductsCatalogProps) 
     return filtered;
   }, [activeCategory, products]);
 
-  const productCounts = useMemo(() => {
-    return products.reduce<Record<string, number>>((counts, product) => {
-      counts[product.categorySlug] = (counts[product.categorySlug] ?? 0) + 1;
-      return counts;
-    }, {});
-  }, [products]);
-
   return (
     <section id="products-grid" className="scroll-mt-20 bg-slate-50 py-10 sm:py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

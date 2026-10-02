@@ -52,7 +52,7 @@ export function Footer({
               </p>
 
               <ul className="mt-4 space-y-2.5">
-                {navigation.slice(0, 4).map((item) => (
+                {navigation.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
@@ -62,6 +62,22 @@ export function Footer({
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href="/categories/fiber-laser-cutting"
+                    className="text-sm text-slate-400 transition-colors hover:text-brand-400"
+                  >
+                    برش لیزر فایبر
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/categories/wood-cnc"
+                    className="text-sm text-slate-400 transition-colors hover:text-brand-400"
+                  >
+                    دستگاه CNC چوب
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -139,16 +155,22 @@ export function Footer({
 
             {/* Gecut Logo Card */}
             <div className="flex w-full flex-col items-center justify-center lg:col-span-2 lg:items-end lg:justify-start">
-              <div className="flex h-26 w-full max-w-[280px] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] p-4 shadow-sm backdrop-blur-xs transition-all hover:border-brand-500/30 hover:bg-white/[0.08] lg:h-28 lg:w-full lg:max-w-[240px]">
+              <a
+                href="https://gecut.ir/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Gecut"
+                className="flex h-26 w-full max-w-[280px] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] p-4 shadow-sm backdrop-blur-xs transition-all hover:border-brand-500/30 hover:bg-white/[0.08] lg:h-28 lg:w-full lg:max-w-[240px]"
+              >
                 <div className="relative aspect-[3.2/1] h-auto w-full max-w-[210px]">
                   <Image
                     src="/images/gecut-logo.webp"
-                    alt="لوگو جیکات GECUT"
+                    alt="Gecut"
                     fill
                     className="object-contain"
                   />
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
