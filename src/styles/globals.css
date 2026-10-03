@@ -310,14 +310,32 @@ figcaption {
 }
 
 .hero-machines-enter {
-  animation: hero-machines-enter .30s .4s cubic-bezier(.22, 1, .36, 1) both;
+  opacity: 0;
+  transform: translate3d(0, 2.5rem, 0) scale(.95);
   transform-origin: 50% 72%;
+  will-change: transform, opacity;
+}
+
+.hero-machines-enter[data-state='entering'] {
+  animation: hero-machines-enter .30s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+.hero-machines-enter[data-state='entered'] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 @media (max-width: 639px) {
-  .hero-machines-enter {
+  .hero-machines-enter[data-state='entering'] {
     animation-duration: 1s;
-    animation-delay: .65s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-machines-enter {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
   }
 }
 

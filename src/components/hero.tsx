@@ -1,3 +1,6 @@
+'use client';
+
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { blackOpsOne } from "@/config/fonts";
 import type { SiteConfig } from "@/config/site-config";
@@ -8,11 +11,71 @@ type HeroProps = {
 };
 
 export function Hero({ hero }: HeroProps) {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isMachineEntered, setIsMachineEntered] = useState(false);
+  const [showAvinText, setShowAvinText] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  const handleImageLoad = useCallback(() => {
+    const img = imageRef.current;
+    if (img && typeof img.decode === "function") {
+      img
+        .decode()
+        .catch(() => {})
+        .finally(() => {
+          setIsImageLoaded(true);
+        });
+    } else {
+      setIsImageLoaded(true);
+    }
+  }, []);
+
+  // Check if image is already cached/complete on mount
+  useEffect(() => {
+    const img = imageRef.current;
+    if (img && img.complete && img.naturalWidth > 0) {
+      handleImageLoad();
+    }
+  }, [handleImageLoad]);
+
+  // Safety fallback: if image loaded, ensure machine entrance transition resolves even if onAnimationEnd doesn't fire
+  useEffect(() => {
+    if (!isImageLoaded || isMachineEntered) return;
+
+    const safetyTimer = setTimeout(() => {
+      setIsMachineEntered(true);
+    }, 1300);
+
+    return () => clearTimeout(safetyTimer);
+  }, [isImageLoaded, isMachineEntered]);
+
+  const handleAnimationEnd = (e: React.AnimationEvent<HTMLDivElement>) => {
+    if (e.animationName === "hero-machines-enter") {
+      setIsMachineEntered(true);
+    }
+  };
+
+  // Exact 200ms delay after machine entry completes before loading/unfolding AVIN text
+  useEffect(() => {
+    if (!isMachineEntered) return;
+
+    const timer = setTimeout(() => {
+      setShowAvinText(true);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [isMachineEntered]);
+
   return (
     <section
       aria-labelledby="hero-title"
       className="relative z-10 min-h-[calc(100svh+20px)] bg-white text-white sm:min-h-[calc(100svh+64px)]"
     >
+      <noscript>
+        <style>{`
+          .hero-machines-enter { opacity: 1 !important; transform: none !important; }
+        `}</style>
+      </noscript>
       <h1 id="hero-title" className="sr-only">
         {hero.eyebrow} — {hero.title} {hero.highlightedTitle} | شرکت دانش‌بنیان آوین ماشین پاژ
       </h1>
@@ -53,28 +116,44 @@ export function Hero({ hero }: HeroProps) {
             className={`w-full hero-avin-scale flex items-center justify-center absolute left-1/2 top-[8%] z-0 -translate-x-1/2 sm:top-[8%] ${blackOpsOne.className}`}
             dir="ltr"
           >
-            <FoldText
-              text="AVIN"
-              splitBy="char"
-              hinge="bottom"
-              trigger="mount"
-              duration={1.5}
-              stagger={0.08}
-              ease="power3.out"
-              perspective={700}
-              creaseShading={0}
-              fontSize="clamp(5rem, 21vw, 12.5rem)"
-              fontWeight={500}
-              color="#f7f2e8"
-              style={{ letterSpacing: "clamp(0.03em, 1.5vw, 0.08em)" }}
-            />
+            {showAvinText && (
+              <FoldText
+                text="AVIN"
+                splitBy="char"
+                hinge="bottom"
+                trigger="mount"
+                duration={1.5}
+                stagger={0.08}
+                ease="power3.out"
+                perspective={700}
+                creaseShading={0}
+                fontSize="clamp(5rem, 21vw, 12.5rem)"
+                fontWeight={500}
+                color="#f7f2e8"
+                style={{ letterSpacing: "clamp(0.03em, 1.5vw, 0.08em)" }}
+              />
+            )}
           </div>
-          <div className="hero-machines-enter absolute inset-0 z-10 trnaslate-x-1/2 left-0 sm:-left-14  [-webkit-mask-image:linear-gradient(to_bottom,#000_0%,#000_74%,transparent_100%)] [mask-image:linear-gradient(to_bottom,#000_0%,#000_74%,transparent_100%)]">
+          <div
+            data-state={
+              isMachineEntered
+                ? "entered"
+                : isImageLoaded
+                  ? "entering"
+                  : "waiting"
+            }
+            onAnimationEnd={handleAnimationEnd}
+            className="hero-machines-enter absolute inset-0 z-10 trnaslate-x-1/2 left-0 sm:-left-14  [-webkit-mask-image:linear-gradient(to_bottom,#000_0%,#000_74%,transparent_100%)] [mask-image:linear-gradient(to_bottom,#000_0%,#000_74%,transparent_100%)]"
+          >
             <Image
+              ref={imageRef}
               src={hero.foregroundImage}
               alt={hero.foregroundImageAlt}
               fill
               priority
+              fetchPriority="high"
+              loading="eager"
+              onLoad={handleImageLoad}
               sizes="(max-width: 639px) 180vw, (max-width: 1023px) 125vw, 108vw"
               className="object-contain object-bottom [filter:brightness(.82)_contrast(1.1)_saturate(.85)_drop-shadow(0_0rem_1.35rem_rgba(0,0,0,.60))_drop-shadow(0_0.8rem_1.8rem_rgba(0,0,0,.80))]"
             />
