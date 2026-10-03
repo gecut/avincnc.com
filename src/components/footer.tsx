@@ -52,7 +52,7 @@ export function Footer({
               </p>
 
               <ul className="mt-4 space-y-2.5">
-                {navigation.map((item) => (
+                {navigation.slice(0, 4).map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
@@ -62,22 +62,6 @@ export function Footer({
                     </Link>
                   </li>
                 ))}
-                <li>
-                  <Link
-                    href="/categories/fiber-laser-cutting"
-                    className="text-sm text-slate-400 transition-colors hover:text-brand-400"
-                  >
-                    برش لیزر فایبر
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/categories/wood-cnc"
-                    className="text-sm text-slate-400 transition-colors hover:text-brand-400"
-                  >
-                    دستگاه CNC چوب
-                  </Link>
-                </li>
               </ul>
             </div>
 

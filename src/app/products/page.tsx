@@ -1,68 +1,22 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Icon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { ProductsCatalog } from "@/components/products-catalog";
 import { siteConfig } from "@/config/site-config";
-import { getBreadcrumbSchema, getItemListSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "محصولات و ماشین‌آلات صنعتی | AVIN CNC",
+  title: "محصولات | AVIN CNC",
   description:
-    "فهرست کامل و دسته‌بندی‌شده دستگاه‌های CNC چوب ۳ تا ۶ محور و دستگاه‌های برش لیزر فایبر فلزات آوین ماشین پاژ با ضمانت و پشتیبانی رسمی.",
+    "فهرست دسته‌بندی‌شده دستگاه‌های CNC چوب و دستگاه‌های برش لیزر فایبر آوین CNC.",
   alternates: { canonical: "/products/" },
-  openGraph: {
-    title: "محصولات و ماشین‌آلات صنعتی | AVIN CNC",
-    description:
-      "فهرست کامل و دسته‌بندی‌شده دستگاه‌های CNC چوب ۳ تا ۶ محور و دستگاه‌های برش لیزر فایبر فلزات آوین ماشین پاژ.",
-    url: "https://avincnc.com/products/",
-    siteName: siteConfig.siteName,
-    locale: "fa_IR",
-    type: "website",
-    images: [
-      {
-        url: "/icon-512.png",
-        width: 512,
-        height: 512,
-        alt: siteConfig.siteName,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary",
-    title: "محصولات و ماشین‌آلات صنعتی | AVIN CNC",
-    description:
-      "فهرست کامل و دسته‌بندی‌شده دستگاه‌های CNC چوب و برش لیزر فایبر آوین CNC.",
-    images: ["/icon-512.png"],
-  },
 };
 
 export default function ProductsPage() {
-  const breadcrumbSchema = getBreadcrumbSchema([
-    { name: "خانه", url: "/" },
-    { name: "محصولات", url: "/products/" },
-  ]);
-
-  const itemListSchema = getItemListSchema(
-    "کاتالوگ ماشین‌آلات و محصولات صنعتی AVIN CNC",
-    "فهرست کلیه ماشین‌آلات صنعتی تولیدی آوین ماشین پاژ شامل دستگاه‌های CNC چوب و برش لیزر فایبر",
-    siteConfig.products.map((p) => ({
-      name: p.name,
-      url: `/products/${p.slug}/`,
-    })),
-  );
-
   return (
     <main className="overflow-x-clip bg-white text-ink-950">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
-      />
       <section className="relative isolate overflow-hidden bg-ink-950 pb-28 text-white sm:pb-32 lg:pb-24">
         <div aria-hidden="true" className="absolute -right-32 top-12 size-[28rem] rounded-full bg-brand-500/20 blur-3xl" />
         <div aria-hidden="true" className="absolute -bottom-48 -left-24 size-[30rem] rounded-full bg-cyan-400/10 blur-3xl" />
@@ -181,7 +135,7 @@ export default function ProductsPage() {
         <ProductsCatalog categories={siteConfig.categories} products={siteConfig.products} />
       </Suspense>
 
-      <section className="bg-white px-4 py-20 sm:px-6 sm:py-20 lg:px-8">
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-o lg:px-8">
         <div className="relative mx-auto w-full overflow-hidden rounded-[2rem] bg-brand-600 px-6 py-10 text-center text-white shadow-2xl shadow-brand-700/20 sm:px-10 sm:py-14">
           <div aria-hidden="true" className="absolute -right-16 -top-20 size-64 rounded-full border-[3rem] border-white/5" />
           <div className="relative mx-auto max-w-2xl">
